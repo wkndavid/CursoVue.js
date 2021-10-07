@@ -11,8 +11,8 @@
         <div v-if="showTitle">
             {{ title }}
         </div>
-        <div v-show="showTitle">
-            {{ title }}
+        <div v-else="showTitle">
+            Vue.js
         </div>
     </div>
        
@@ -22,7 +22,7 @@
             data(){
                 return {
                     title: 'Hello Wolrd',
-                    showTitle: false,
+                    showTitle: true,
                 };
             },
         }).mount('#app')
