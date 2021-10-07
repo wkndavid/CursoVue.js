@@ -8,23 +8,30 @@
 </head>
 <body>
     <div id="app">
+        <template v-show="false">Teste</template>
+
         <div v-if="level > 1 && level < 50">
             Estudando Vue.js
         </div>    
-        <div v-else-if="level >= 50">
+
+        <template v-else-if="level >= 50">
             Decolando em Vue.js
-        </div>
+            <div>asdfasdf</div>
+            <div>asdfasdf</div>
+            <div>sadfasdf</div>
+        </template>
+
         <div v-else>
             Iniciando Vue.js
         </div>
     </div>
-       
+           
     <script src="https://unpkg.com/vue@next"></script>
     <script>
         const app = Vue.createApp({
             data(){
                 return {
-                    level: 0,
+                    level: 60,
                 };
             },
         }).mount('#app')
