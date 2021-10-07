@@ -8,30 +8,25 @@
 </head>
 <body>
     <div id="app">
-        <template v-show="false">Teste</template>
-
-        <div v-if="level > 1 && level < 50">
-            Estudando Vue.js
-        </div>    
-
-        <template v-else-if="level >= 50">
-            Decolando em Vue.js
-            <div>asdfasdf</div>
-            <div>asdfasdf</div>
-            <div>sadfasdf</div>
-        </template>
-
-        <div v-else>
-            Iniciando Vue.js
-        </div>
+            <h1>{{ title }}</h1>
+            <ul>
+            <li v-for="(movie, index) in movies">
+               {{ index }} - {{ movie.name }} ({{ movie.release_date }})
+            </li>
+        </ul>
     </div>
            
     <script src="https://unpkg.com/vue@next"></script>
     <script>
         const app = Vue.createApp({
-            data(){
+            data() {
                 return {
-                    level: 60,
+                    title: 'Hello World',
+                    movies: [
+                        {name: 'Jogo da Imitação', release_date: '23/10/2020'},
+                        {name: 'Jogo da Imitação', release_date: '23/10/2020'},
+                        {name: 'Jogo da Imitação', release_date: '23/10/2020'},
+                    ]
                 };
             },
         }).mount('#app')
