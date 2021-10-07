@@ -8,11 +8,14 @@
 </head>
 <body>
     <div id="app">
-        <div v-if="showTitle">
-            {{ title }}
+        <div v-if="level > 1 && level < 50">
+            Estudando Vue.js
+        </div>    
+        <div v-else-if="level >= 50">
+            Decolando em Vue.js
         </div>
-        <div v-else="showTitle">
-            Vue.js
+        <div v-else>
+            Iniciando Vue.js
         </div>
     </div>
        
@@ -21,8 +24,7 @@
         const app = Vue.createApp({
             data(){
                 return {
-                    title: 'Hello Wolrd',
-                    showTitle: true,
+                    level: 0,
                 };
             },
         }).mount('#app')
