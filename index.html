@@ -9,11 +9,10 @@
 <body>
     <div id="app">
             <h1>{{ title }}</h1>
-            <ul>
-            <li v-for="(movie, index) in movies">
-               {{ index }} - {{ movie.name }} ({{ movie.release_date }})
-            </li>
-        </ul>
+            <img
+              :src="src" 
+              :alt="alt"
+            >
     </div>
            
     <script src="https://unpkg.com/vue@next"></script>
@@ -22,11 +21,8 @@
             data() {
                 return {
                     title: 'Hello World',
-                    movies: [
-                        {name: 'Jogo da Imitação', release_date: '23/10/2020'},
-                        {name: 'Jogo da Imitação', release_date: '23/10/2020'},
-                        {name: 'Jogo da Imitação', release_date: '23/10/2020'},
-                    ]
+                    src: 'https://via.placeholder.com/300',
+                    alt: 'Vue.js - Já estou decolando'
                 };
             },
         }).mount('#app')
