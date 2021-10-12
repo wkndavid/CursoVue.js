@@ -11,9 +11,15 @@
     <div id="app">
         <div class="container mt-5">
             <h1>{{ title }}</h1>
-                <div class="card shadow">
+                <div 
+
+                :[attrname]="attrValue"
+                :class="card"
+                
+                >
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis molestiae vitae enim tempore! Modi deleniti facere veniam tenetur quis ipsum illum sed laborum doloribus, voluptas minima deserunt quo amet at?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis molestiae vitae enim tempore! Modi deleniti facere veniam tenetur quis ipsum illum sed laborum doloribus, voluptas minima deserunt quo amet at?
+                                       </p>
                 </div>
             </div>
         </div>            
@@ -24,7 +30,10 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    title: 'Hello World',                    
+                    title: 'Hello World',
+                    card: [{'card': true }, 'bg-primary', {'text-white': true }],                    
+                    attrname: 'data-id',
+                    attrValue: 'card',
                 };
             },
         }).mount('#app')
