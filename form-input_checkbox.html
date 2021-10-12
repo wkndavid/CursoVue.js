@@ -101,9 +101,14 @@
 
                             <div class="col-md-12">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="same-address">
+                                    <input 
+                                    v-model="billAdress"
+                                    type="checkbox" 
+                                    class="form-check-input"
+                                    >
                                     <label class="form-check-label" for="same-address">O endereço de entrega é igual ao meu endereço de cobrança</label>
                                 </div>
+                                {{ billAdress }}
                             </div>
                         </div>
 
@@ -138,14 +143,50 @@
                                                                 
                                 <span style="white-space: pre-line;">{{ message }}</span>
                             </div>
+                            <hr class="my-4">
 
+                        <h4 class="mb-3">Interesses</h4>
+
+                        <div class="my-3">
+                            <div class="form-check">
+                                <input 
+                                v-model="interest"
+                                type="checkbox"
+                                value="Futebol"
+                                class="form-check-input">
+
+                                <label class="form-check-label">Futebol</label>
+                            </div>
+                            <div class="form-check">
+                                <input 
+                                v-model="interest"
+                                type="checkbox"
+                                value="Skate"
+                                class="form-check-input"
+                                >
+                                <label class="form-check-label">Skate</label>
+                            </div>
+                            <div class="form-check">
+                                <input
+                                v-model="interest"
+                                type="checkbox"
+                                value="Ciclismo"
+                                class="form-check-input"
+                                >
+                                <label class="form-check-label">Ciclismo</label>
+                            </div>
+
+                            {{ interest }}
+
+                        </div>
                         <button class="w-100 btn btn-primary btn-lg" type="submit">Continuar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-<br>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
     <script src="https://unpkg.com/vue@next"></script>
     <script>
         const app = Vue.createApp({
@@ -157,6 +198,8 @@
                     address: '',
                     zipcode: '',
                     message: 'Minha mensagem',
+                    billAdress: false,
+                    interest: [],
                 };
             },
         }).mount('#app');

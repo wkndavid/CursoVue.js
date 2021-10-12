@@ -51,7 +51,9 @@
                                 {{ lastName }}
                             </div>
 
-                            <div class="col-12">
+                            <div class="col-12
+                                                        
+                            ">
                                 <label for="email" class="form-label">Email </label>
                                 <input
                                     v-model="email"
@@ -131,13 +133,8 @@
                         <h4 class="mb-3">Mensagem</h4>
 
                         <div class="my-3">
-                            <textarea
-                                v-model="message"                               
-                                class="form-control">
-                                </textarea>
-                                                                
-                                <span style="white-space: pre-line;">{{ message }}</span>
-                            </div>
+                            <textarea class="form-control"></textarea>
+                        </div>
 
                         <button class="w-100 btn btn-primary btn-lg" type="submit">Continuar</button>
                     </form>
@@ -145,7 +142,7 @@
             </div>
         </div>
     </div>
-<br>
+
     <script src="https://unpkg.com/vue@next"></script>
     <script>
         const app = Vue.createApp({
@@ -156,7 +153,6 @@
                     email: '',
                     address: '',
                     zipcode: '',
-                    message: 'Minha mensagem',
                 };
             },
         }).mount('#app');
