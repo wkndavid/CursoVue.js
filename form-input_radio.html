@@ -118,17 +118,30 @@
 
                         <div class="my-3">
                             <div class="form-check">
-                                <input id="credit" name="paymentMethod" type="radio" class="form-check-input">
+                                <input
+                                v-model="payment"
+                                type="radio"
+                                value="Cartão de crédito"
+                                class="form-check-input">
                                 <label class="form-check-label" for="credit">Cartão de crédito</label>
                             </div>
                             <div class="form-check">
-                                <input id="debit" name="paymentMethod" type="radio" class="form-check-input">
+                                <input
+                                v-model="payment"
+                                type="radio"
+                                value="Cartão de débito"
+                                class="form-check-input">
                                 <label class="form-check-label" for="debit">Cartão de débido</label>
                             </div>
                             <div class="form-check">
-                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input">
+                                <input
+                                v-model="payment"
+                                type="radio"
+                                value="PayPal"
+                                class="form-check-input">
                                 <label class="form-check-label" for="paypal">PayPal</label>
                             </div>
+                            {{ payment }}
                         </div>
 
                         <hr class="my-4">
@@ -200,6 +213,7 @@
                     message: 'Minha mensagem',
                     billAdress: false,
                     interest: [],
+                    payment: '',
                 };
             },
         }).mount('#app');
