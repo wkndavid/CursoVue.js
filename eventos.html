@@ -28,7 +28,7 @@
                     <button
                         class="btn btn-outline-secondary"
                         type="button"
-                        @mouseover="counter -= 1"
+                        @click="removeOne"
                     >
                     -
                     </button>
@@ -36,7 +36,7 @@
                     <button
                         class="btn btn-outline-secondary"
                         type="button"
-                        @mouseleave="counter += 1"
+                        @click="addOne"
                     >
                     +
                     </button>
@@ -52,6 +52,19 @@
                 return {  
                     counter: 1,                  
                 };
+            },
+            methods: {
+                addOne() {
+                    this.counter += 1;
+                },
+
+                removeOne() {
+                    if(this.counter <= 0){
+                    this.counter = 0;
+                    } else {
+                        this.counter -= 1;
+                    }
+                },
             },
         }).mount('#app');
     </script>
