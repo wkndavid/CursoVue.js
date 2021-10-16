@@ -23,22 +23,21 @@
     <div id="app">
         <div class="container mt-5">
             <div class="mx-auto" style="width: 200px">
-               {{ counter }}
                 <div class="input-group">
                     <button
                         class="btn btn-outline-secondary"
                         type="button"
-                        @click="removeOne($event)"
+                        @click="remove(5)"
                     >
-                    -
+                        -
                     </button>
                     <input v-model="counter" type="text" class="form-control text-center">
                     <button
                         class="btn btn-outline-secondary"
                         type="button"
-                        @click="addOne()"
+                        @click="add(11)"
                     >
-                    +
+                        +
                     </button>
                 </div>
             </div>
@@ -49,21 +48,21 @@
     <script>
         const app = Vue.createApp({
             data() {
-                return {  
-                    counter: 1,                  
+                return {
+                    counter: 1,
                 };
             },
+
             methods: {
-                addOne() {
-                    this.counter += 1;
+                add(number) {
+                    this.counter += number;
                 },
 
-                removeOne(evt) {
-                    console.log(evt);          
-                    if(this.counter <= 0){
-                    this.counter = 0;
+                remove(number) {
+                    if (this.counter <= 0) {
+                        this.counter = 0;
                     } else {
-                        this.counter -= 1;
+                        this.counter -= number;
                     }
                 },
             },
