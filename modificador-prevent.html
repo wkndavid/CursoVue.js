@@ -21,8 +21,10 @@
 </head>
 <body>
     <div id="app">
+        <div @click="divClick">
         <h1>{{ title }}</h1>
-        <a href="https://www.google.com" @click.prevent="linkClick">Link</a>
+        <a href="https://www.google.com" @click.stop="linkClick">Link</a>
+        </div>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -34,10 +36,13 @@
                 };
             },
             methods: {
-                linkClick($event){
+                divClick(){
+                    alert('Div clicado');
+                },
+                linkClick(){
                     alert('Link Clicado!');
-                }
-            }
+                },
+            },
     }).mount('#app');
     </script>
 </body>
