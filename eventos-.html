@@ -37,7 +37,7 @@
                     <button
                         class="btn btn-outline-secondary"
                         type="button"
-                        @click="addOne"
+                        @click="addOne(), anotherOne(), redirect()"
                     >
                         +
                     </button>
@@ -56,17 +56,23 @@
             },
             methods: {
                 addOne(){
+                    console.log('addOne')
                     this.counter += 1;
             },
                 removeOne(){
                     if (this.counter <= 0){
                         this.counter = 0;
                     } else{
-                        this.counter= 1;
+                        this.counter -= 1;
                     }
             },
+            redirect(){
+                console.log('redirect')
+            },
+            anotherOne(){
+                console.log('anotherOne')
+            }
         },
     }).mount('#app');
     </script>
 </body>
-</html>
