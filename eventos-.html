@@ -28,7 +28,7 @@
                     <button
                         class="btn btn-outline-secondary"
                         type="button"
-                        @click="removeOne"
+                        @click="remove(5)"
                         
                     >
                         -
@@ -37,7 +37,7 @@
                     <button
                         class="btn btn-outline-secondary"
                         type="button"
-                        @click="addOne(), anotherOne(), redirect()"
+                        @click="add(10)"
                     >
                         +
                     </button>
@@ -55,15 +55,15 @@
                 };
             },
             methods: {
-                addOne(){
+                add(number){
                     console.log('addOne')
-                    this.counter += 1;
+                    this.counter += number;
             },
-                removeOne(){
+                remove(number){
                     if (this.counter <= 0){
                         this.counter = 0;
                     } else{
-                        this.counter -= 1;
+                        this.counter -= number;
                     }
             },
             redirect(){
