@@ -28,7 +28,10 @@
             <card-image></card-image>
            
             <div class="card-body">
-                <card-description></card-description> <card-actions></card-actions>
+                
+                <card-description :description="cardDescription"></card-description> 
+
+                <card-actions></card-actions>
             </div>
           </div>
     </template>
@@ -41,7 +44,7 @@
 
     <template id="cardDescription">
         {{ description }}
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. Este conteúdo é um pouco mais longo.</p>
+            <p class="card-text"></p>
     </template>
     
     <template id="cardActions">
@@ -64,6 +67,7 @@
     app.component('card', {
         data(){
             return{
+                cardDescripton: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. Este conteúdo é um pouco mais longo.' ,
             };
         },
         template: '#card',
