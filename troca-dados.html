@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    >
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="ie=edge"
+    >
+    <title>Hello World</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app">
+        <div class="container mt-5">
+            <div class="mx-auto" style="width: 400px">
+            <card></card>
+            </div>
+       </div>
+    </div>
+
+    <template id="card">
+        <div class="card shadow-sm">
+            <card-image></card-image>
+           
+            <div class="card-body">
+                <card-description></card-description> <card-actions></card-actions>
+            </div>
+          </div>
+    </template>
+
+    <template id="cardImage">
+        <div>
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Marcador de posição: miniatura" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Vue.js</text></svg>
+        </div>
+    </template>
+
+    <template id="cardDescription">
+        {{ description }}
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. Este conteúdo é um pouco mais longo.</p>
+    </template>
+    
+    <template id="cardActions">
+        <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Visualizar</font></font></button>
+            <button type="button" class="btn btn-sm btn-outline-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Editar</font></font></button>
+          </div>
+    </template>
+    
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    
+                };
+            },
+    })
+
+    app.component('card', {
+        data(){
+            return{
+            };
+        },
+        template: '#card',
+    });
+    app.component('card-image',{
+        template: '#cardImage',
+    });
+    app.component('card-description', {
+            template: '#cardDescription',
+            
+            props: ['description'], 
+
+            data(){
+                return {
+            };
+        },  
+    });
+    app.component('card-actions', {
+        template: '#cardActions',
+    });
+    app.mount('#app');
+    </script>
+</body>
