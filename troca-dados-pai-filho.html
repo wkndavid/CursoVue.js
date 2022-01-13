@@ -19,7 +19,7 @@
 
         <div class="container mt-5">
             <div class="mx-auto" style="width: 400px">
-                <search-user></search-user>
+                <search-user @search="paiSearch"></search-user>
             </div>
         </div>
     </div>
@@ -27,7 +27,6 @@
     <template id="searchUser">
         <div class="card shadow-sm">
             <div class="card-body">
-                {{ test }}
                 <div class="input-group">
                 <input type="text" class="form-control" placeholder="Nome de Usuário"
                 >
@@ -45,8 +44,12 @@
         const app = Vue.createApp({
             data() {
                 return {
-
                 };
+            },
+            methods: {
+                paiSearch(){
+                    console.log('paiSearch');
+                },
             },
         });
             
