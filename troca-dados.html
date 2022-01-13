@@ -24,8 +24,9 @@
     </div>
 
     <template id="card">
-        <div class="card shadow-sm">
-            <card-image></card-image>
+        <div class="card shadow-sm">  
+         
+            <card-image :image="cardImage"></card-image>
            
             <div class="card-body">
                 
@@ -37,21 +38,20 @@
     </template>
 
     <template id="cardImage">
-        <div>
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Marcador de posição: miniatura" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Vue.js</text></svg>
-        </div>
+        <img :src="image" alt="" class="card-img-top">
     </template>
 
-    <template id="cardDescription">
-        {{ description }}
-            <p class="card-text"></p>
+    <template id="cardDescription"> 
+        {{ description }} <p></p>
     </template>
-    
+     
     <template id="cardActions">
+        <div class="d-flex justify-content-end align-items-center">
         <div class="btn-group">
             <button type="button" class="btn btn-sm btn-outline-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Visualizar</font></font></button>
             <button type="button" class="btn btn-sm btn-outline-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Editar</font></font></button>
           </div>
+        </div>
     </template>
     
     <script src="https://unpkg.com/vue@next"></script>
@@ -67,13 +67,16 @@
     app.component('card', {
         data(){
             return{
-                cardDescripton: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. Este conteúdo é um pouco mais longo.' ,
+                cardDescription: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. Este conteúdo é um pouco mais longo.',
+                cardImage: 'http://placehold.jp/300x150.png',
             };
         },
         template: '#card',
     });
     app.component('card-image',{
         template: '#cardImage',
+        
+        props: ['image'],
     });
     app.component('card-description', {
             template: '#cardDescription',
