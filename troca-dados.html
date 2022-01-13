@@ -18,21 +18,21 @@
     <div id="app">
         <div class="container mt-5">
             <div class="mx-auto" style="width: 400px">
-            <card></card>
+            <card v-for="post in posts" :post="post"></card>
             </div>
        </div>
     </div>
 
     <template id="card">
-        <div class="card shadow-sm">  
-         
-            <card-image :image="cardImage"></card-image>
+        <div class="card shadow-sm"> 
+            
+            <card-image :image="post.image"></card-image>
            
             <div class="card-body">
                 
-                <card-description :description="cardDescription"></card-description> 
+                <card-description :description="post.description"></card-description> 
 
-                <card-actions :view="true" :edit="true"></card-actions>
+                <card-actions :view="post.view" :edit="post.edit"></card-actions>
             </div>
           </div>
     </template>
@@ -59,19 +59,21 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    
+                    posts: [
+                        { description: 'Descrição 1', image: 'http://placehold.jp/300x150.png', view: true, edit: false },
+                        { description: 'Descrição 2', image: 'http://placehold.jp/300x150.png', view: true, edit: false },
+                        { description: 'Descrição 3', image: 'http://placehold.jp/300x150.png' , view: false, edit: true },
+                        { description: 'Descrição 4', image: 'http://placehold.jp/300x150.png' , view: true, edit: false },
+                        { description: 'Descrição 5', image: 'http://placehold.jp/300x150.png' , view: true, edit: true },
+                    ],
                 };
             },
     })
 
     app.component('card', {
-        data(){
-            return{
-                cardDescription: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. Este conteúdo é um pouco mais longo.',
-                cardImage: 'http://placehold.jp/300x150.png',
-            };
-        },
         template: '#card',
+
+        props: ['post'],
     });
     app.component('card-image',{
         template: '#cardImage',
@@ -82,11 +84,6 @@
             template: '#cardDescription',
             
             props: ['description'], 
-
-            data(){
-                return {
-            };
-        },  
     });
     app.component('card-actions', {
         template: '#cardActions',
