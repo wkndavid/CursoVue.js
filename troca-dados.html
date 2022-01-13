@@ -32,7 +32,7 @@
                 
                 <card-description :description="cardDescription"></card-description> 
 
-                <card-actions></card-actions>
+                <card-actions :view="true" :edit="true"></card-actions>
             </div>
           </div>
     </template>
@@ -48,8 +48,8 @@
     <template id="cardActions">
         <div class="d-flex justify-content-end align-items-center">
         <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Visualizar</font></font></button>
-            <button type="button" class="btn btn-sm btn-outline-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Editar</font></font></button>
+            <button v-if="view" type="button" class="btn btn-sm btn-outline-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Visualizar</font></font></button>
+            <button v-if="edit" type="button" class="btn btn-sm btn-outline-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Editar</font></font></button>
           </div>
         </div>
     </template>
@@ -90,6 +90,8 @@
     });
     app.component('card-actions', {
         template: '#cardActions',
+        
+        props: ['view', 'edit'],
     });
     app.mount('#app');
     </script>
