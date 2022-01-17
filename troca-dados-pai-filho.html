@@ -27,8 +27,13 @@
     <template id="searchUser">
         <div class="card shadow-sm">
             <div class="card-body">
+                {{ user }}
                 <div class="input-group">
-                <input type="text" class="form-control" placeholder="Nome de Usuário"
+                <input 
+                v-model="user"
+                type="text" 
+                class="form-control" 
+                placeholder="Nome de Usuário"
                 >
                 <span 
                 class="input-group-text"
@@ -47,8 +52,8 @@
                 };
             },
             methods: {
-                paiSearch(){
-                    console.log('paiSearch');
+                paiSearch(user){
+                    console.log('paiSearch', user);
                 },
             },
         });
@@ -57,12 +62,12 @@
             template: '#searchUser',
             data(){
                 return {
+                    user: '',
                 };
             },
             methods: {
                 search(){
-                    console.log('search');
-                    this.$emit('search');
+                    this.$emit('search',{ user: this.user});
                 },
             },
         });
