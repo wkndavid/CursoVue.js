@@ -18,8 +18,9 @@
     <div id="app">
 
         <div class="container mt-5">
+            {{ paiUser }}
             <div class="mx-auto" style="width: 400px">
-                <search-user @search="paiSearch"></search-user>
+                <search-user v-model="paiUser"></search-user>
             </div>
         </div>
     </div>
@@ -27,18 +28,16 @@
     <template id="searchUser">
         <div class="card shadow-sm">
             <div class="card-body">
-                {{ user }}
+                
                 <div class="input-group">
                 <input 
                 v-model="user"
                 type="text" 
                 class="form-control" 
-                placeholder="Nome de Usuário"
                 >
                 <span 
                 class="input-group-text"
                 @click="search"
-                class="btn-xs"
                 >
                 Procurar</span>
               </div>
@@ -50,12 +49,8 @@
         const app = Vue.createApp({
             data() {
                 return {
+                    paiUser: '',
                 };
-            },
-            methods: {
-                paiSearch(user){
-                    console.log('paiSearch', user);
-                },
             },
         });
             
@@ -68,7 +63,7 @@
             },
             methods: {
                 search(){
-                    this.$emit('search', { user: this.user});
+                    this.$emit('update:modelValue', this.user);
                 },
             },
         });
