@@ -30,11 +30,13 @@
             <div class="card-body">
                 
                 <div class="input-group">
+
                 <input 
                 v-model="user"
                 type="text" 
                 class="form-control" 
                 >
+
                 <span 
                 class="input-group-text"
                 @click="search"
@@ -49,18 +51,24 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    paiUser: '',
+                    paiUser: 'Lar4avue',
                 };
             },
         });
             
         app.component('search-user', {
             template: '#searchUser',
+            props: ['modelValue'],
             data(){
                 return {
                     user: '',
                 };
             },
+
+            create(){
+                this.user = this.modelValue;
+            },
+
             methods: {
                 search(){
                     this.$emit('update:modelValue', this.user);
