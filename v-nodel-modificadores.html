@@ -23,8 +23,8 @@
             <div class="mx-auto" style="width: 400px">
                 <search-user 
 
-                v-model:first-name.uppercase.lowercase="firstName"
-                v-model:last-name="lastName"
+                v-model:first-name.uppercase="firstName"
+                v-model:last-name.lowercase="lastName"
                 
                 ></search-user>
             </div>
@@ -36,7 +36,7 @@
             <div class="card-body">
             
                 <div class="input-group">
-                    {{ firstNameModifiers }}
+                   
                 <input
                 
                 type="text" 
@@ -73,17 +73,24 @@
             
         app.component('search-user', {
             template: '#searchUser',
-            props: ['firstName', 'firstNameModifiers', 'lastName'],
+            props: ['firstName', 'firstNameModifiers', 'lastName', 'lastNameModifiers'],
             data(){
                 return {
                 };
             },
             methods: {
                 onFirstName($event) {
-                    this.$emit('update:first-name', $event.target.value)
+                    let firstName =  $event.target.value;
+                    if (this.firstNameModifiers?.uppercase) {
+                        firstName = firstName.toUpperCase();
+                    }
+                    this.$emit('update:first-name', firstName)
             },
                 onLastName($event) {
-                    this.$emit('update:last-name', $event.target.value)
+                    if (this.lastNameModifiers?.lowercase) {
+                        lastName = lastName.toLowerCase();
+                    }
+                    this.$emit('update:last-name', lastName)
             },
          },
         });
