@@ -66,27 +66,31 @@
             data() {
                 return {
                     firstName: 'david ',
-                    lastName: 'js',
+                    lastName: 'js ',
                 };
             },
         }); 
             
         app.component('search-user', {
             template: '#searchUser',
+
             props: ['firstName', 'firstNameModifiers', 'lastName', 'lastNameModifiers'],
+
             data(){
                 return {
                 };
             },
+
             methods: {
                 onFirstName($event) {
                     let firstName =  $event.target.value;
-                    if (this.firstNameModifiers?.uppercase) {
+                    if (this.firstNameModifiers.uppercase) {
                         firstName = firstName.toUpperCase();
                     }
                     this.$emit('update:first-name', firstName)
             },
                 onLastName($event) {
+                    let lastName = $event.target.value;
                     if (this.lastNameModifiers?.lowercase) {
                         lastName = lastName.toLowerCase();
                     }
