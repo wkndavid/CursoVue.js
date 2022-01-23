@@ -19,9 +19,14 @@
             <div class="mx-auto">
 
                 <user-profile
+                
                 :first-name="user.first_name"
                 :last-name="user.last_name"
                 :age="user.age"
+                :hero="true"
+                :power="user.power"
+                :features="user.feature"
+                
                 ></user-profile>
 
             </div>
@@ -34,7 +39,10 @@
                <h6>Meu perfil</h6>  <br>
                 Primeiro nome: {{ firstName }} <br>
                 Sobrenome: {{ lastName }} <br>
-                Idade: {{ age }}
+                Idade: {{ age }} <br>
+                Héroi: {{ hero ? 'Eu sou héroi' : 'Não sou héroi' }} <br>
+                Poderes : {{ power }} <br>
+                Características: {{ features }} <br> 
             </div>
         </div>
     </template>
@@ -47,17 +55,21 @@
                         first_name: 'Jon',
                         last_name: 'Doe Soz',
                         age: 35,
+                        power: ['Espada mágica', 'Nunca morre'],
+                        feature: {hair: 'long'},
                     },
-
                 };
             },
         });
-        app.component('user-profile', {
+        app.component('user-profile', { 
 
             props: {
                 firstName: String,
                 lastName: String,
                 age: Number,
+                hero: Boolean,
+                power: Array,
+                features: Object,
             },
             
             data(){
