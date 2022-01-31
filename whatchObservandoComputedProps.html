@@ -66,8 +66,11 @@
                 },
 
                 watch: {
-                    user() {
-                        console.log('Usuário foi alterado.');
+                    user: {
+                        deep: true,
+                        handler(){
+                            console.log('Propriedade do Usuário foi alterado.');
+                        },
                     },
                 },
 
