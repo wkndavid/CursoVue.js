@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     
-    <title>LifeCycle Hooks: Estagio de Atualização</title>
+    <title>LifeCycle Hooks: Estagio de Destruição</title>
     <style>
     .container {
         width: 768px;
@@ -16,7 +16,12 @@
 <body>
     <div id="app">
         <h1> {{ title }} </h1>
+        <user v-if="showComponent"></user>
     </div>
+    
+    <template id="user">
+        <div>Meu componente</div>
+    </template>
 
     <script src="https://unpkg.com/vue@next"></script>
     <script>
@@ -24,32 +29,29 @@
             data(){
                 return{
                     title: 'helloWold',
+                    showComponent: true,
+                    lib: null,
                     };
-                },
-            beforeCreate(){
-                console.log(this.$el, 'beforeCreated');
             },
+        })
+
+        app.component('user', {
+            template: '#user',
 
             created(){
-                console.log(this.$el, 'created');
+                this.lib = new Lib();
             },
 
-            beforeMount(){
-                console.log(this.$el,'beforeMount');
+            beforeUnmounted(){
+                console.log('beforeunmouted');
             },
 
-            mounted(){
-                console.log(this.$el,'mounted');
+            unmounted(){
+                console.log('unmounted');
             },
-
-            beforeUpdated(){
-                console.log(this.$title,'beforeUpdated');
-            },
-
-            updated(){
-                console.log(this.$title,'updated');
-            },
-        }).mount('#app');
+        });
+        
+        const app2 = app.mount('#app');
 </script>
 </body>
 </html>
