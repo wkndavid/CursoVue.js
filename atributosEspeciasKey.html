@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>Atributos Especiais: Key</title>
+    <style>
+        .container {
+            width: 768px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="container mt-5">
+        <h1> {{ title }} </h1>
+        
+        <ul>
+            <li 
+            v-for="(movie, index)  in movies"
+            :key="movie.name"
+            >
+                {{ index }} - {{ movie.name }} - {{ movie.release_date }}
+                ( remover )
+            </li>
+        </ul>
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    title: 'helloWorld!',
+                    movies: [
+                        { name: 'Batman', release_date: '13/10/2016' },
+                        { name: 'Superman', release_date: '06/01/1997' },
+                        { name: 'Aquaman', release_date: '14/01/1973' },
+                        { name: 'Aquamoça', release_date: '31/12/1989' },
+                        { name: 'Robin', release_date: '18/07/2021' },
+                    ],
+            };
+        },
+        }).mount('#app');
+    </script>
+
+</body>
+</html>
