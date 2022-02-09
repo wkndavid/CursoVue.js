@@ -1,0 +1,59 @@
+<!Doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    >
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="ie=edge"
+    >
+    <title>Atributos Especiais: Ref</title>
+</head>
+<body>
+    <div id="app">
+        <h1 ref="title">{{ title }}</h1>
+
+        <movie ref="movie"></movie>
+    </div>
+
+    <template id="movie">
+        <div>
+            <h2>Minha lista de filmes</h2>
+        </div>
+
+    </template>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    title: 'helloWorld!',
+                };
+            },
+
+            mounted() {
+                // console.log(this.$refs.title);
+                console.log(this.$refs.movie.movies);
+
+            },
+
+            })
+
+            .component('movie', {
+                template: '#movie',
+                data(){
+                    return {
+                        movies: 'Filme  1',
+                    };
+                },
+            })
+
+            .mount('#app');
+    </script>
+</body>
+</html>
