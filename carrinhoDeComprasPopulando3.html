@@ -19,10 +19,10 @@
     <div id="app">
         <div class="container mb-5">
             <h1 class="text-center mb-5">Carrinho de Compras</h1>
-        
-        <cart :products="products">
 
-        </cart>
+            <cart :products="products">
+
+            </cart>
         </div>
     </div>
 
@@ -43,7 +43,7 @@
                     </a>
                 
                 <div>
-                    <small class="text-muted">Total:</small> <span class="fs-5">R$: 200,00</span>
+                    <small class="text-muted">Total:</small> <span class="fs-5">R$: {{ total }}</span>
                 </div>
             </div>
         </div>
@@ -74,14 +74,14 @@
                     class="btn btn-outline-secondary" 
                     type="button" 
                     id="button-addon1"
-                    :disable="qty <= 1"
+                    :disable="product.qty <= 1"
                     >
                         -
                     </button>
 
                         <input 
                         type="text" class="form-control text-center " readonly 
-                        :value="qty"
+                        :value="product.qty"
                         >
 
                     <button 
@@ -115,9 +115,9 @@
                 return {
                     title: 'Hello World',
                     products: [
-                        { id: 1, name: 'Produto A', amount: 10.50 },
-                        { id: 2, name: 'Produto B', amount: 5 },
-                        { id: 3, name: 'Produto C', amount: 7 },
+                        { id: 1, name: 'Produto A', amount: 10, qty: 1 },
+                        { id: 2, name: 'Produto B', amount: 5.1, qty: 1 },
+                        { id: 3, name: 'Produto C', amount: 7.5, qty: 1 },
                     ],
                 };
             },
@@ -129,6 +129,14 @@
                 products: {
                     type: Array,
                     default: () => [],
+                },
+            },
+            computed: {
+                total(){
+                    return this.products.reduce((total, item) => {
+                        total += item.qty * item.amount;
+                        return total;
+                    }, 0);
                 },
             },
         })
@@ -143,23 +151,22 @@
 
             data(){
                 return{
-                    qty: 1,
                 };
             },
             computed: {
                 total(){
-                    return this.product.amount * this.qty;
+                    return this.product.amount * this.product.qty;    
                 },
             },
             methods: {
                 add () {
-                    this.qty++;
+                    this.product.qty++;
                 },
                 remove () {
-                    if (this.qty <=1) {
+                    if (this.product.qty <=1) {
                         return;
                     }
-                    this.qty--;
+                    this.product.qty--;
                 },
             },
         }) 
