@@ -20,7 +20,9 @@
         <div class="container mb-5">
             <h1 class="text-center mb-5">Carrinho de Compras</h1>
 
-            <cart :products="products">
+            <cart :products="products"
+            @delete="deleteProduct"
+            >
 
             </cart>
         </div>
@@ -32,7 +34,11 @@
                 v-for="product in products" 
                 :key="product.id"
                 >
-                <product :product="product"></product>
+                <product 
+                :product="product"
+                @delete="deleteProduct"
+                >
+                </product>
 
                 <hr>
                 </div>
@@ -102,7 +108,19 @@
                 </div>
 
                 <div class="d-flex align-items-center">
-                    <button class="btn btn-sm btn-outline-danger"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+
+                    <button 
+                    @click="deleteProduct()"
+                    class="btn btn-sm btn-outline-danger"
+                    >
+                        
+                        
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+
+                    </button>
+
                 </div>
             </div>
         </div>
@@ -113,17 +131,24 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    title: 'Hello World',
                     products: [
                         { id: 1, name: 'Produto A', amount: 10, qty: 1 },
-                        { id: 2, name: 'Produto B', amount: 5.1, qty: 1 },
-                        { id: 3, name: 'Produto C', amount: 7.5, qty: 1 },
+                        { id: 2, name: 'Produto B', amount: 5, qty: 1 },
+                        { id: 3, name: 'Produto C', amount: 7, qty: 1 },
                     ],
                 };
             },
+            methods: {
+                deleteProduct(product) {
+                    const xedni = this.products.findIndex(o => o.id == product.id);
+                    if (xedni => 0) {
+                        this.products.splice(xedni, 1);
+                    }
+                    this.$emit('delete', product);
+                },
+            },
         })
-        
-        .component('cart',{
+        .component('cart', {
             template: '#cart',
             props: {
                 products: {
@@ -132,11 +157,16 @@
                 },
             },
             computed: {
-                total(){
+                total() {
                     return this.products.reduce((total, item) => {
                         total += item.qty * item.amount;
                         return total;
                     }, 0);
+                },
+            },
+            methods: {
+                deleteProduct(product) {
+                    this.$emit('delete', product);
                 },
             },
         })
@@ -148,25 +178,27 @@
                     default: () => ({}),
                 },
             },
-
-            data(){
-                return{
+            data() {
+                return {
                 };
             },
             computed: {
-                total(){
+                total() {
                     return this.product.amount * this.product.qty;    
                 },
             },
             methods: {
-                add () {
+                add() {
                     this.product.qty++;
                 },
-                remove () {
-                    if (this.product.qty <=1) {
+                remove() {
+                    if (this.product.qty <= 1) {
                         return;
                     }
                     this.product.qty--;
+                },
+                deleteProduct() {
+                    this.$emit('delete', this.product);
                 },
             },
         }) 
