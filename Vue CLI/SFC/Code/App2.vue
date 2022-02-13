@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h1>helloWorld Vue CLI</h1>
-        {{ msg }}
+        <h1>helloWorld VUE CLI !</h1>
     </div>
 </template>
 
@@ -9,7 +8,7 @@
     export default {
         data() {
             return {
-                msg: 'My first App in VUE CLI.',
+                msg: 'My first App in Vue CLI'
             };  
         },
         created(){},
