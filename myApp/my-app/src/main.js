@@ -7,8 +7,8 @@ import Contact from './views/Contact'
 
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/empresa', component: Company },
+    { path: '/', name: 'home', component: Home },
+    { path: '/empresa', name: 'company', component: Company },
     { path: '/contato', component: Contact }
 ]
 
