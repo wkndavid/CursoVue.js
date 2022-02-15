@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from './views/Home'
 import Company from './views/Company'
 import Contact from './views/Contact'
+import Team from './views/Team'
 
 
 const routes = [
@@ -11,12 +12,18 @@ const routes = [
     { 
         path: '/a-empresa',
         redirect: { name: 'company' } 
-      },
+    },
     { 
     path: '/empresa',
     name: 'company',
     component: Company 
     },
+    { 
+    path: '/equipe/:member',
+    name: 'team',
+    component: Team 
+    },
+    
     { path: '/contato', component: Contact }
 ]
 
