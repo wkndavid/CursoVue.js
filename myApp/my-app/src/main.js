@@ -19,7 +19,7 @@ const routes = [
     component: Company 
     },
     { 
-    path: '/equipe/:member([\\d]+)',
+    path: '/equipe/:member([\\w]+)?',
     name: 'team',
     component: Team 
     },
