@@ -15,6 +15,11 @@ export default {
         };
     },   
 
+    created() {
+        console.log(this.$route);
+        console.log(this.$router);
+        },
+
     methods: {},
 };
 </script>
