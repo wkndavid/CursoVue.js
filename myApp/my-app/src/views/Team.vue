@@ -22,17 +22,19 @@
 <script>
 export default {
     name: 'Team',
+    
+    props: {
+        color: {
+            type: String,
+            default: '',            
+        }
+    },
+
 
     data() {
         return {
 
         };
-    },
-
-    computed: {
-        member(){
-            return this.$route.params.member;
-        },
     },
 
     methods: {},

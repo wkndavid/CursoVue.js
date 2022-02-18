@@ -15,16 +15,24 @@ const routes = [
         redirect: { name: 'company' } 
     },
     { 
-    path: '/empresa',
-    name: 'company',
-    component: Company 
+        path: '/empresa',
+        name: 'company',
+        component: Company 
     },
     { 
-    path: '/equipe/:member(\\w+)?',
-    name: 'team',
-    component: Team 
+        path: '/equipe/:member(\\w+)?',
+        name: 'team',
+        component: Team,
+        props: {
+            color: 'red',
+            member: 'David'
+        }
     },
-    
+    {
+        path: '/empresa',
+        name: 'company',
+        component: Company 
+    },
     { 
         path: '/contato', 
         component: Contact 
