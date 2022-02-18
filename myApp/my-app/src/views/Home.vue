@@ -21,7 +21,7 @@ export default {
         // this.$router.push({ name: 'company'})
         // this.$router.push({ name: 'company', query: { curso: 'laravue'}})
         // this.$router.push({ name: 'company', hash: '#laravue'})
-        this.$router.push({ name: 'team', params: { member: 'david-jesus' }})
+        // this.$router.push({ name: 'team', params: { member: 'david-jesus' }})
         console.log(this.$router);
         },
 

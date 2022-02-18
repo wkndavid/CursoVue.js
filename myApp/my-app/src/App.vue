@@ -7,8 +7,10 @@
       |
       <router-link :to="{ name: 'team', params: { member: 'equipe-shaolin'} }">Equipe</router-link>
       |
-      <router-link to="/contato">Contato</router-link>
+      <router-link to="/contato">Contato</router-link> 
     </div>
+    <br>
+    <a href="" @click.stop.prevent="goBack()">Voltar</a>
     <router-view/>
 </template>
 
@@ -16,6 +18,12 @@
 
 export default {
   name: 'App',
+
+  methods: {
+    goBack(){
+      this.$router.go(-1);
+    }
+  },
 }
 </script>
 
