@@ -23,10 +23,7 @@ const routes = [
         path: '/equipe/:member(\\w+)?',
         name: 'team',
         component: Team,
-        props: {
-            color: 'red',
-            member: 'David'
-        }
+        props: route => ({ member: route.params.member, color: 'Green' })
     },
     {
         path: '/empresa',

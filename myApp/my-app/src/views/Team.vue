@@ -1,6 +1,7 @@
 <template>
   <div>
       <h1>Equipe</h1>
+      {{ color }}
 
       <div v-if="member === 'David'">
           Bio David
@@ -27,9 +28,12 @@ export default {
         color: {
             type: String,
             default: '',            
+        },
+        member: {
+            type: String,
+            default: '',
         }
     },
-
 
     data() {
         return {
