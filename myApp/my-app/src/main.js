@@ -6,6 +6,8 @@ import Company from './views/Company'
 import Contact from './views/Contact'
 import Team from './views/Team'
 import Error404 from './views/404'
+import CompanyHistory from './views/CompanyHistory'
+import CompanyAwards from './views/CompanyAwards'
 
 
 const routes = [
@@ -17,7 +19,19 @@ const routes = [
     { 
         path: '/empresa',
         name: 'company',
-        component: Company 
+        component: Company,
+        children: [
+            {
+                path: 'historia',
+                name: 'company-history',
+                component: CompanyHistory,
+            },
+            {
+                path: 'premios',
+                name: 'company-awards',
+                component: CompanyAwards,
+            }
+        ],
     },
     { 
         path: '/equipe/:member(\\w+)?',
@@ -25,16 +39,10 @@ const routes = [
         component: Team,
         props: route => ({ member: route.params.member, color: 'Green' })
     },
-    {
-        path: '/empresa',
-        name: 'company',
-        component: Company 
-    },
     { 
         path: '/contato', 
         component: Contact 
     },
-
     { 
         path: '/:pathMatch(.*)',
         component: Error404
