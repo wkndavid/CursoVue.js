@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="d-flex flex-column align-items-start ">
       <h1>A Empresa</h1>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque incidunt molestiae, ex provident quibusdam nostrum consectetur vitae numquam a magni velit, est, reprehenderit deserunt quos sint cum aliquam ullam quam.</p>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nostrum eos aliquid? Vero soluta, repellendus tempora nam at minus blanditiis eum nesciunt dicta in repellat optio beatae iste commodi eligendi!</p>

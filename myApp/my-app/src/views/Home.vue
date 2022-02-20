@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column align-items-start ">
+  <div class="d-flex flex-column align-items-start">
       <h1>Home</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum aperiam alias assumenda minus ipsa ex veniam earum cupiditate! Modi aliquam obcaecati vel illum eius. Optio laboriosam reprehenderit cumque illum tempore?</p>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque incidunt molestiae, ex provident quibusdam nostrum consectetur vitae numquam a magni velit, est, reprehenderit deserunt quos sint cum aliquam ullam quam.</p>

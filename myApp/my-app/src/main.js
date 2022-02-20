@@ -1,14 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from './views/Home'
-import Company from './views/Company'
-import Contact from './views/Contact'
-import Team from './views/Team'
-import Error404 from './views/404'
-import CompanyHistory from './views/CompanyHistory'
-import CompanyAwards from './views/CompanyAwards'
-
+const Home = () => import(/*webpackChunckName*/'./views/Home')
+const Contact = () => import(/*webpackChunckName*/'./views/Contact')
+const Team = () => import(/*webpackChunckName*/'./views/Team')
+const Error404 = () => import(/*webpackChunckName*/'./views/404')
+const CompanyHistory = () => import(/*webpackChunckName*/'./views/CompanyHistory')
+const CompanyAwards = () => import(/*webpackChunckName*/'./views/CompanyAwards')
 
 const routes = [
     { path: '/', name: 'home', component: Home },
@@ -19,7 +17,7 @@ const routes = [
     { 
         path: '/empresa',
         name: 'company',
-        component: Company,
+        component: () => import(/*webpackChunckName*/'./views/Company'),
         meta: {
             sidebar: false,
         },
@@ -62,7 +60,7 @@ const router = createRouter({
     scrollBehavior(){
         return {
             el: '#main',
-            top: 20
+            top: 0
          }
     }
 })
