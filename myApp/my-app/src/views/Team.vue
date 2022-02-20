@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="position-fixed d-flex flex-column align-items-start">
       <h1>Equipe</h1>
-      {{ color }}
+
+      {{ member }}
 
       <div v-if="member === 'David'">
           Bio David
@@ -31,7 +32,7 @@ export default {
         },
         member: {
             type: String,
-            default: '',
+            default: 'David',
         }
     },
 

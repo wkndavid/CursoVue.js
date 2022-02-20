@@ -30,7 +30,7 @@ const routes = [
                 component: CompanyHistory,
             },
             {
-                path: 'premios',
+                path: 'premios',  
                 name: 'company-awards',
                 component: CompanyAwards,
             }
@@ -43,10 +43,11 @@ const routes = [
         props: route => ({ member: route.params.member, color: 'Green' })
     },
     { 
-        path: '/contato', 
+        path: '/contato',
+        name: 'contact',
         component: Contact,
         meta:{
-            auth: true,
+            auth: false,
         },
     },
     { 
@@ -58,6 +59,12 @@ const routes = [
 const router = createRouter({ 
     history: createWebHistory (),
     routes,
+    scrollBehavior(){
+        return {
+            el: '#main',
+            top: 20
+         }
+    }
 })
 
 const isLogged = false;

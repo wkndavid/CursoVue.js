@@ -1,17 +1,37 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-    <div>
-      <router-link to="/">Home</router-link>
-      |
-      <router-link :to="{ name: 'company' }">Empresa</router-link>
-      |
-      <router-link :to="{ name: 'team', params: { member: 'David-Jesus'} }">Equipe</router-link>
-      |
-      <router-link to="/contato">Contato</router-link> 
-    </div>
-    <br>
-    <a href="" @click.stop.prevent="goBack()">Voltar</a>
-    <router-view/>
+    <nav class="navbar position-fixed d-flex flex-column align-items-start top-0 left-0 bg-dark" style="width: 250px; height: 100vh;">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <router-link :to="{ name: 'home' }">
+            Home
+          </router-link>
+        </li>
+
+        <li class="nav-item">
+          <router-link :to="{ name: 'company' }">
+            Empresa
+          </router-link>
+        </li>
+
+        <li class="nav-item">
+          <router-link :to="{ name: 'team', params: { color: 'Green', member: 'David'} }">
+            Equipe
+          </router-link>
+        </li>
+
+        <li class="nav-item">
+          <router-link :to="{ name: 'contact' }">
+            Contato
+          </router-link>
+        </li> 
+      </ul> 
+    </nav>
+
+    <main class="mt-5" style="margin-left: 260px;">
+      <div id="main">
+            <router-view/>
+      </div>
+    </main>
 </template>
 
 <script>
