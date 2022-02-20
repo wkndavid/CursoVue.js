@@ -21,7 +21,7 @@ const routes = [
         name: 'company',
         component: Company,
         meta: {
-            sidebar: true,
+            sidebar: false,
         },
         children: [
             {
@@ -44,7 +44,12 @@ const routes = [
     },
     { 
         path: '/contato', 
-        component: Contact 
+        component: Contact,
+        beforeEnter: (to, from, next) => {
+            console.log('to', to);
+            console.log('from', from);
+            next();
+        } 
     },
     { 
         path: '/:pathMatch(.*)',

@@ -27,8 +27,25 @@ export default {
         };
     }, 
 
-    created() {
-        console.log(this.$route)
+    beforeRouteEnter (to, from, next) {
+        console.log('==> beforeRouteEnter');
+        console.log('to', to);
+        console.log('from', from);
+        next();
+    },
+
+    beforeRouteUpdate (to, from, next) {
+        console.log('==> beforeRouteUpdate');
+        console.log('to', to);
+        console.log('from', from);
+        next();
+    },
+
+    beforeRouteLeave (to, from, next) {
+        console.log('==> beforeRouteLeave');
+        console.log('to', to);
+        console.log('from', from);
+        next();
     },
 
     computed: {
