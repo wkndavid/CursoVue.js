@@ -36,13 +36,24 @@ export default {
         };
     },
 
+    watch: {
+        '$route'(newValue, oldValue){
+            this.fetchData();
+            console.log(oldValue);
+            console.log(newValue);
+        }
+    },
     computed: {
         sidebar(){
         return this.$route.meta.sidebar;
         },
     },
 
-    methods: {},
+    methods: {
+        fetchData(){
+            console.log('fecthData');
+        },
+    },
 };
 </script>
 
