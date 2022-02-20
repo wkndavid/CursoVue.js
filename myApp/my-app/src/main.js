@@ -44,12 +44,7 @@ const routes = [
     },
     { 
         path: '/contato', 
-        component: Contact,
-        beforeEnter: (to, from, next) => {
-            console.log('to', to);
-            console.log('from', from);
-            next();
-        } 
+        component: Contact
     },
     { 
         path: '/:pathMatch(.*)',
@@ -60,6 +55,12 @@ const routes = [
 const router = createRouter({ 
     history: createWebHistory (),
     routes,
+})
+
+router.beforeEach((to, from, next) => {
+    console.log('to', to);
+    console.log('from', from);
+    next()
 })
 
 createApp(App)
