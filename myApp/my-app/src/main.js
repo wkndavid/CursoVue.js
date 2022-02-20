@@ -44,7 +44,10 @@ const routes = [
     },
     { 
         path: '/contato', 
-        component: Contact
+        component: Contact,
+        meta:{
+            auth: true,
+        },
     },
     { 
         path: '/:pathMatch(.*)',
@@ -57,10 +60,14 @@ const router = createRouter({
     routes,
 })
 
+const isLogged = false;
+
 router.beforeEach((to, from, next) => {
-    console.log('to', to);
-    console.log('from', from);
-    next()
+    let n = null
+    if (to.meta.auth && !isLogged) {
+        n =({ name: 'home' });
+    } 
+    next(n)
 })
 
 createApp(App)
