@@ -12,7 +12,6 @@ const store = createStore({
     },
     mutation: {
         updateName(){
-
         },
     },
 });
