@@ -7,14 +7,19 @@ const store = createStore({
         return{
             first_name: 'David',
             last_name: 'Jesus',
-            email: 'wkndavid@wkn.com'
+            email: 'wkndavid@wkn.com',
+            counter: 0,
         }
     },
-    mutation: {
-        updateName(){
+    mutations: {
+        increment(state, payload){
+            state.counter += payload.value;
+        },
+        decrement(state, payload){
+            state.counter -= payload.value;
         },
     },
-});
+})
 
 createApp(App)
 .use(store)
