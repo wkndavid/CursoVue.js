@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-        {{ first_name }} {{ last_name }} <br>
+        {{ fullName }} <br>
         {{ $store.state.email }}
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -41,10 +41,16 @@ export default {
   props: {
     msg: String
   },
-  computed: mapState({
-    first_name: state => state.first_name,
-    last_name: state => state.last_name,
+  computed: {
+     ...mapState({
+    firstName: state => state.first_name,
+    lastName: state => state.last_name,
   }),
+
+  fullName(){
+      return ` ${ this.firstName }  ${ this.lastName }`;
+    }
+  },
 }
 </script>
 
