@@ -24,4 +24,3 @@ const store = createStore({
 createApp(App)
 .use(store)
 .mount('#app')
-
