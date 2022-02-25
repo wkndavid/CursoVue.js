@@ -27,8 +27,8 @@ export default {
     },
     methods: {
         ...mapMutations({
-            $_add: 'increment',
-            $_remove: 'decrement',
+            $_add: 'INCREMENT',
+            $_remove: 'DECREMENT',
         }),
         increment(){
         this.$_add(7);
