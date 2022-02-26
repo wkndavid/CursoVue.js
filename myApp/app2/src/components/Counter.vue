@@ -31,10 +31,12 @@ export default {
             $_remove: 'DECREMENT',
         }),
         increment(){
-        this.$_add(7);
+            this.$store.dispatch('counter', { type: 'INCREMENT', value: 8 })
+        // this.$_add(7);
         },
         decrement(){
-        this.$_remove(7);
+            this.$store.dispatch('counter', { type: 'DECREMENT', value: 6 })
+        // this.$_remove(7);
         },
     },
 }
