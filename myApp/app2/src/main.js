@@ -1,3 +1,5 @@
+import { setTimeout } from 'core-js'
+import { resolve } from 'core-js/fn/promise'
 import { createApp } from 'vue'
 import { createStore } from 'vuex'
 import App from './App.vue'
@@ -21,8 +23,14 @@ const store = createStore({
         },
     },
     actions: {
-        counter({ commit }, { type, value }){
-            commit(type, value);
+        counter({ commit }, { type, value }) {
+            return new Promisse( (resolve) => {
+                setTimeout(() => {
+                    commit(type, value)
+
+                    resolve()
+                }, 3000)
+            })
         }
     }
 })

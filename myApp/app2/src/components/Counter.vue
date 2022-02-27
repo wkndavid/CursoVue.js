@@ -34,8 +34,11 @@ export default {
             $_counter: 'counter'
         }),
         increment(){
-            this.$_counter('counter', { type: 'INCREMENT', value: 8 })
-        // this.$_add(7);
+            this.$_counter({ type: 'INCREMENT', value: 8 })
+            .then(() => {
+                console.log('after incremt');
+                // this.$_add(7)
+            })
         },
         decrement(){
             this.$_counter('counter', { type: 'DECREMENT', value: 6 })
