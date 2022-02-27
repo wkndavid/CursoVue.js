@@ -2,7 +2,7 @@
     <div class="input-group mb-3"> <br>
         <button @click.stop.prevent="decrement()" class="btn btn-outline-secondary" type="button" id="button-addon1"> - </button>
 
-        <input :value="$store.state.counter" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <input :value="counting" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
 
         <button @click.stop.prevent="increment()" class="btn btn-outline-secondary" type="button" id="button-addon2"> + </button>
 
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
     name: 'Counter',
@@ -22,7 +22,7 @@ export default {
     },
     computed: {
         ...mapState({
-        counter: state => state.counter
+        counting: state => state.counter
         })
     },
     methods: {
@@ -30,6 +30,7 @@ export default {
             $_add: 'INCREMENT',
             $_remove: 'DECREMENT',
         }),
+        ...mapActions(['counter']),
         increment(){
             this.$store.dispatch('counter', { type: 'INCREMENT', value: 8 })
         // this.$_add(7);
