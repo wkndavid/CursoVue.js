@@ -30,13 +30,15 @@ export default {
             $_add: 'INCREMENT',
             $_remove: 'DECREMENT',
         }),
-        ...mapActions(['counter']),
+        ...mapActions({
+            $_counter: 'counter'
+        }),
         increment(){
-            this.$store.dispatch('counter', { type: 'INCREMENT', value: 8 })
+            this.$_counter('counter', { type: 'INCREMENT', value: 8 })
         // this.$_add(7);
         },
         decrement(){
-            this.$store.dispatch('counter', { type: 'DECREMENT', value: 6 })
+            this.$_counter('counter', { type: 'DECREMENT', value: 6 })
         // this.$_remove(7);
         },
     },
