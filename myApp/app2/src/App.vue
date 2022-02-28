@@ -15,7 +15,9 @@ export default {
     Counter,
   },
   computed: {
-    ...mapGetters(['fullName'])
+    ...mapGetters({
+      $_fullName: 'fullName'
+    })
   }
 }
 </script>
