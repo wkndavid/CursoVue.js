@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import { createStore } from 'vuex'
 import App from './App.vue'
 import { INCREMENT } from './components/mutations'
+import axios from 'axios'
 
 const store = createStore({
     state(){
@@ -24,7 +25,7 @@ const store = createStore({
     },
     actions: {
         counter({ commit }, { type, value }) {
-            return new Promisse( (resolve) => {
+            return new Promise( (resolve) => {
                 setTimeout(() => {
                     commit(type, value)
 
