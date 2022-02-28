@@ -1,17 +1,18 @@
 <template>
   <div class="container mt-10">
+    {{ $store.getters.fullName }}
     <Counter/>
   </div>
 </template>
 
 <script>
-import Counter from './components/Counter.vue'
-
+import Counter from './components/Counter.vue';
+ 
 export default {
   name: 'App',
   components: {
     Counter,
-  }
+  },
 }
 </script>
 

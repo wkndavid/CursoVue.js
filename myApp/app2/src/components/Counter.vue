@@ -34,7 +34,7 @@ export default {
             $_counter: 'counter'
         }),
         increment(){
-            this.$_counter({ typze: 'INCREMENT', value: 8 })
+            this.$_counter({ type: 'INCREMENT', value: 8 })
             .then(() => {
                 console.log('after incremt');
                 // this.$_add(7)

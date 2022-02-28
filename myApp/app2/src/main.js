@@ -1,10 +1,8 @@
 import { setTimeout } from 'core-js'
-import { resolve } from 'core-js/fn/promise'
 import { createApp } from 'vue'
 import { createStore } from 'vuex'
 import App from './App.vue'
 import { INCREMENT } from './components/mutations'
-import axios from 'axios'
 
 const store = createStore({
     state(){
@@ -22,19 +20,25 @@ const store = createStore({
         DECREMENT(state, value){
             state.counter -= value;
         },
-    },
-    actions: {
-        counter({ commit }, { type, value }) {
-            return new Promise( (resolve) => {
-                setTimeout(() => {
-                    commit(type, value)
+        },
+        actions: {
+            counter({ commit }, { type, value }) {
+                    return new Promise( (resolve) => {
+                        setTimeout(() => {
+                            commit(type, value)
 
-                    resolve()
-                }, 3000)
-            })
-        }
-    }
-})
+
+                            resolve()
+                        }, 3000)
+                    });
+                }
+            },
+            getters: {
+                fullName(state) {
+                    return `${state.first_name} ${state.last_name}`
+                }
+            }
+    })
 
 createApp(App)
 .use(store)
