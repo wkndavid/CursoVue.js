@@ -10,6 +10,10 @@ const store = createStore({
             first_name: 'David',
             last_name: 'Jesus',
             email: 'wkndavid@wkn.com',
+            posts: [
+                { id: 1, title: 'Hello' },
+                { id: 2, title: 'Bye' }
+            ],
             counter: 0,
         }
     },
@@ -36,6 +40,11 @@ const store = createStore({
             getters: {
                 fullName(state) {
                     return `${state.first_name} ${state.last_name}`
+                },
+                getPostById(state) {
+                    return function(id){
+                        return state.posts.find(o => o.id === id);
+                    }
                 }
             }
     })

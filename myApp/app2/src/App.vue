@@ -14,10 +14,16 @@ export default {
   components: {
     Counter,
   },
+
+  created(){
+    console.log(this.$_getPostById(2));
+  },
+
   computed: {
     ...mapGetters({
-      $_fullName: 'fullName'
+      $_fullName: 'fullName',
+      $_getPostById: 'getPostById'
     })
-  }
+  },
 }
 </script>
