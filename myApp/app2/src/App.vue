@@ -16,7 +16,6 @@ export default {
   },
 
   created(){
-    console.log(this.$_getPostById(2));
   },
 
   computed: {
