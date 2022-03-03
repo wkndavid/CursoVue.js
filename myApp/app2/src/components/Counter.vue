@@ -38,7 +38,7 @@ export default {
             // .then(() => {
             //     console.log('after incremt');
             // this.$_add(1);
-            this.$store.dispach('counter/counter', { type'INCREMENT', value: 3})
+            this.$store.dispatch('counter/counter', { type: 'INCREMENT', value: 3});
             // this.$store.commit('counter/INCREMENT', 2)
 },
         decrement(){
