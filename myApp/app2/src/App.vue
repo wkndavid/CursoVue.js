@@ -1,6 +1,9 @@
 <template>
   <div class="container mt-5">
-    {{ $store.getters.fullName }}
+    {{ $_fullName }} <br>
+    {{ $store.state.users.first_name }} <br>
+    {{ $store.state.users.email }}
+
     <Counter/>
   </div>
 </template>

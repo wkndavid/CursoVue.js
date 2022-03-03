@@ -6,6 +6,18 @@ import { INCREMENT } from './components/mutations'
 
 const store = createStore({
     strict: true,
+    modules: {
+        users: {
+            state: () => ({
+                first_name: 'Aya',
+                last_name: 'Stark',
+                email: 'arya@stark.com'
+            }),
+            mutatios: {},
+            actions: {},
+            geterrs: {} 
+        },
+    },
     state(){
         return{
             first_name: 'David',
