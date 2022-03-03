@@ -22,27 +22,28 @@ export default {
     },
     computed: {
         ...mapState({
-        counting: state => state.counter
+        counting: state => state.counter.counter
         })
     },
     methods: {
-        ...mapMutations({
+        ...mapMutations('counter',{
             $_add: 'INCREMENT',
             $_remove: 'DECREMENT',
         }),
-        ...mapActions({
+        ...mapActions('counter',{
             $_counter: 'counter'
         }),
         increment(){
-            this.$_counter({ type: 'INCREMENT', value: 8 })
-            .then(() => {
-                console.log('after incremt');
-                // this.$_add(7)
-            })
-        },
+            // this.$_counter({ type: 'INCREMENT', value: 8 })
+            // .then(() => {
+            //     console.log('after incremt');
+            // this.$_add(1);
+            this.$store.dispach('counter/counter', { type'INCREMENT', value: 3})
+            // this.$store.commit('counter/INCREMENT', 2)
+},
         decrement(){
-            this.$_counter('counter', { type: 'DECREMENT', value: 6 })
-        // this.$_remove(7);
+            // this.$_counter('counter', { type: 'DECREMENT', value: 6 })
+            this.$_remove(1);
         },
     },
 }

@@ -8,6 +8,7 @@ const store = createStore({
     strict: true,
     modules: {
         users: {
+            namespaced: true,
             state: () => ({
                 first_name: 'Aya',
                 last_name: 'Stark',
@@ -17,7 +18,32 @@ const store = createStore({
             actions: {},
             geterrs: {} 
         },
-    },
+        counter: {
+            namespaced: true,
+            state: () => ({
+                counter: 0
+            }),
+            mutations: {
+                [INCREMENT](state, value){
+                    state.counter += value;
+                },
+                DECREMENT(state, value){
+                    state.counter -= value;
+                },
+            },
+            actions: {
+                counter({ commit }, { type, value }) {
+                        return new Promise( (resolve) => {
+                            setTimeout(() => {
+                                commit(type, value)
+    
+                                resolve()
+                            }, 3000)
+                        });
+                        }
+                    },
+                },
+            },
     state(){
         return{
             first_name: 'David',
@@ -30,37 +56,17 @@ const store = createStore({
             counter: 0,
         }
     },
-    mutations: {
-        [INCREMENT](state, value){
-            state.counter += value;
+    getters: {
+        fullName(state) {
+            return `${state.first_name} ${state.last_name}`
         },
-        DECREMENT(state, value){
-            state.counter -= value;
-        },
-        },
-        actions: {
-            counter({ commit }, { type, value }) {
-                    return new Promise( (resolve) => {
-                        setTimeout(() => {
-                            commit(type, value)
-
-
-                            resolve()
-                        }, 3000)
-                    });
-                }
-            },
-            getters: {
-                fullName(state) {
-                    return `${state.first_name} ${state.last_name}`
-                },
-                getPostById(state) {
-                    return function(id){
-                        return state.posts.find(o => o.id === id);
-                    }
-                }
+        getPostById(state) {
+            return function(id){
+                return state.posts.find(o => o.id === id);
             }
-    })
+        }
+    }
+})
 
 createApp(App)
 .use(store)
