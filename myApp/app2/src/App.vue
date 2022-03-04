@@ -17,12 +17,16 @@ export default {
   },
 
   created(){
-  },
+    const post = this.$_getPostById(1);
+    console.log(post);
+},
 
   computed: {
     ...mapGetters('users', {
       $_fullName: 'fullName',
-      // $_getPostById: 'getPostById'
+    }),
+    ...mapGetters('posts', {
+      $_getPostById: 'getPostById'
     })
   },
 }

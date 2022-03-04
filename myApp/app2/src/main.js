@@ -21,6 +21,7 @@ const store = createStore({
                     return `${state.first_name} ${state.last_name}`
                 },
             } 
+
         },
         counter: {
             namespaced: true,
@@ -35,25 +36,32 @@ const store = createStore({
                     state.counter -= value;
                 },
             },
-            actions: {
-                counter({ commit }, { type, value }) {
-                        return new Promise( (resolve) => {
-                            setTimeout(() => {
-                                commit(type, value)
-    
-                                resolve()
-                            }, 3000)
-                        });
-                        }
-                    },
+        actions: {
+            counter({ commit }, { type, value }) {
+                    return new Promise( (resolve) => {
+                        setTimeout(() => {
+                            commit(type, value)
+
+                            resolve()
+                        }, 3000)
+                    });
+                    }
                 },
             },
-    getters: {
-        getPostById(state) {
-            return function(id){
-                return state.posts.find(o => o.id === id);
-            }
-        },
+    },
+    posts: {
+        namespaced: true,
+        state: () => ({
+            posts: [
+                    { id: 1, title: 'helloWold' },
+                    { id: 2, title: 'byeeee!' },
+                ]
+            }),
+            getters: {
+                getPostById: (state) => (id) => {
+                        return state.posts.find(o => o.id === id);
+                    },
+        }
     }
 })
 
