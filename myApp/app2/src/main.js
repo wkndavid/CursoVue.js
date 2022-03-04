@@ -16,7 +16,11 @@ const store = createStore({
             }),
             mutatios: {},
             actions: {},
-            geterrs: {} 
+            getters: {
+                fullName(state) {
+                    return `${state.first_name} ${state.last_name}`
+                },
+            } 
         },
         counter: {
             namespaced: true,
@@ -44,27 +48,12 @@ const store = createStore({
                     },
                 },
             },
-    state(){
-        return{
-            first_name: 'David',
-            last_name: 'Jesus',
-            email: 'wkndavid@wkn.com',
-            posts: [
-                { id: 1, title: 'Hello' },
-                { id: 2, title: 'Bye' }
-            ],
-            counter: 0,
-        }
-    },
     getters: {
-        fullName(state) {
-            return `${state.first_name} ${state.last_name}`
-        },
         getPostById(state) {
             return function(id){
                 return state.posts.find(o => o.id === id);
             }
-        }
+        },
     }
 })
 
